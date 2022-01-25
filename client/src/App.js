@@ -17,12 +17,12 @@ function App() {
   const createUser = () => {
     axios
       .post("http://localhost:3001/createUser", {
-        name:  name ,
-        age:  age ,
-        username:  username ,
+        name,
+        age,
+        username,
       })
       .then((response) => {
-        alert("usercreated");
+        setUsers([...users, { name, age, username }]);
       });
     setName("");
     setAge(0);
@@ -31,9 +31,9 @@ function App() {
   return (
     <div className="App">
       <div>
-        {users.map((user) => {
+        {users.map((user, index) => {
           return (
-            <div key={user._id}>
+            <div key={index}>
               <div>Name: {user.name}</div>
               <div>Age: {user.age}</div>
               <div>Username: {user.username}</div>
